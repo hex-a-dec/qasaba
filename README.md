@@ -43,7 +43,7 @@ The agents have limited capabilities such as:
 - **command execution**
 - **change directory (cd) function**
 - **file upload**
-- a basic SOCKS5 may be added in the future
+- a basic SOCKS5 may or may not be added in the future.
 
 ## Installation
 
