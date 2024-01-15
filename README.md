@@ -15,7 +15,7 @@ In Amazigh regions, a qasaba (Arabic: قَـصَـبَـة) is a fortified resid
 
 ## [*] Overview
 
-Qasaba is a minimalist command-and-control (C2) project that combines cross-platform agents developed in Golang and a multi-client server made in Python. Communications between the server and agents is carried out using TLS. The Python server comes with an agent generation feature for Windows and Linux. 
+Qasaba is a minimalist command-and-control (C2) project that combines cross-platform agents developed in Golang and a multi-client server made in Python. Communications between the server and agents is carried out using TLS. The C2 server comes with an agent generation feature for Windows and Linux. 
 
 ### Philosophy
 
