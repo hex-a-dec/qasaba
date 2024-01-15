@@ -13,7 +13,7 @@
 
 In Amazigh regions, a qasaba (Arabic: قَـصَـبَـة) is a fortified residence, often built of mudbrick. A safe place in a realm of sand and loneliness.
 
-## Overview
+## [*] Overview
 
 Qasaba is a minimalist command-and-control (C2) project that combines cross-platform agents developed in Golang and a multi-client server made in Python. Communications between the server and agents is carried out using TLS. Thus, The Python server comes with an agent generation feature for Windows and Linux. 
 
@@ -45,7 +45,7 @@ The agents have limited capabilities such as:
 - **file upload**
 - a basic SOCKS5 may or may not be added in the future.
 
-## Installation
+## [*] Installation
 
 ### Requirements:
 - Go
@@ -69,7 +69,7 @@ cd key
 openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out cert.pem -keyout cert.key
 ```
 
-## Usage
+## [*] Usage
 
 The project is divded into three components: 
 - a server in Python (`main.py`)
@@ -84,7 +84,7 @@ The following snapshots show a basic usage which includes running a listener, bu
 
 You can find more help using `:help` from the `c2 >` main menu.
 
-## Credits
+## [*] Credits
 A special thanks goes to :
 - [0xRick and his "Building a Basic C2](https://0xrick.github.io/misc/c2/). in my opinion, his blog post grasps very well the fundamentals of writing a C2
 - [Joe Helle. His tutorial "Python3 Command and Control How to Guide"](https://medium.themayor.tech/python3-command-and-control-how-to-guide-1d539618b777) was a vital contribution to me, because it helps me to create a working back-bone from wich I could build Qasaba.
