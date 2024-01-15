@@ -87,5 +87,5 @@ You can find more help using `:help` from the `c2 >` main menu.
 ## [*] Credits
 A special thanks goes to :
 - [0xRick and his "Building a Basic C2](https://0xrick.github.io/misc/c2/). in my opinion, his blog post grasps very well the fundamentals of writing a C2
-- [Joe Helle. His tutorial "Python3 Command and Control How to Guide"](https://medium.themayor.tech/python3-command-and-control-how-to-guide-1d539618b777) was a vital contribution to me, because it helps me to create a working back-bone from wich I could build Qasaba.
+- [Joe Helle. His tutorial "Python3 Command and Control How to Guide"](https://medium.themayor.tech/python3-command-and-control-how-to-guide-1d539618b777) was a vital contribution to me, it helps me to create a working back-bone from wich I could build Qasaba.
 - [Djnn and his "What I learned writing a loader in Golang"](https://djnn.sh/what-i-learned-writing-a-loader-in-golang/) blog post which was inspiring when it comes to not over-engineer to much things
