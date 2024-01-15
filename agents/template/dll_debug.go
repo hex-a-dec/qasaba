@@ -6,6 +6,7 @@ package main
 import (
 	"net"
 	"os"
+	"C"
 	"os/exec"
 	"os/user"
 	"runtime"
