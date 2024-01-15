@@ -74,7 +74,7 @@ openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out cert.pem -ke
 The project is divded into three components: 
 - a server in Python (`main.py`)
 - a directory (`agents/`) that contains generated agents and templates (`agents/template/`) used during the payload generation. In this directory, you will find templates that you can use to generate more verbose agents for debugging or learning purposes.
-- an `utils/` directory that contains the self-signed certificate used for TLS communications and a yara rule that can help you to detect default Qasaba's agents if you need to house clean after an exercice or do some hunting. I'm not a Yara specialist, feel free to contribute.
+- an `utils/` directory that contains the self-signed certificate used for TLS communications and a yara rule that can help you to detect default Qasaba's agents if you need to clean the house after an exercice or do some hunting. I'm not a Yara specialist, feel free to contribute.
 
 The following snapshots show a basic usage which includes running a listener, building an agent then interacting with it:
 
