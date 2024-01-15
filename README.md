@@ -63,7 +63,9 @@ source qasaba-venv/bin/activate
 # Installing required package
 pip3 install prettytable colorama
 # generate self-signed certificate
-cd utils/key
+cd utils
+mkdir key
+cd key
 openssl req -newkey rsa:4096  -x509  -sha512  -days 365 -nodes -out cert.pem -keyout cert.key
 ```
 
