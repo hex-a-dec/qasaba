@@ -8,7 +8,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 ![Go](https://img.shields.io/badge/go-1.18-red.svg)
-![Release](https://img.shields.io/badge/release-1.0-yellow.svg)
+![Release](https://img.shields.io/badge/release-1.1-yellow.svg)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 In Amazigh regions, a qasaba (Arabic: قَـصَـبَـة) is a fortified residence, often built of mudbrick. A safe place in a realm of sand and loneliness.
@@ -61,7 +61,7 @@ cd /opt/qasaba
 sudo virtualenv qasaba-venv 
 source qasaba-venv/bin/activate
 # Installing required package
-pip3 install prettytable colorama
+pip3 install prettytable colorama donut
 # generate self-signed certificate
 cd utils
 mkdir key
